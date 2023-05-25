@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>View Recipe</title>
+</head>
+<body>
+    <div class="container row justify-content-center mx-auto mt-2">
+        <nav class="navbar mt-3 navbar-dark bg-dark justify-content-between col-9">
+            <h1 class="text-light">Welcome, {{user.first_name}}</h1>
+            <form class="form-inline">
+                <a href="/dashboard" class="btn btn-warning btn-lg mr-3 text-center">Back to Recipes</a>
+                <a href="/logout" class="btn btn-danger btn-lg text-center">Logout</a>
+            </form>
+        </nav>
+        <div class="row justify-content-between col-9 bg-light">
+            <h2>{{recipe.name}}</h2>
+            <p class="d-flex align-items-end">Posted by: {{recipe.creator.first_name}}</p>
+        </div>
+        <div class="card col-9 mx-auto bg-secondary text-white p-3">
+            <div class="row mb-3">
+                <p class="col-4">Description:</p>
+                <p class="col-8">{{recipe.description}}</p>
+            </div>
+            <div class="row mb-3">
+                <p class="col-4">Under 30 Minutes?</p>
+                <p class="col-8">
+                    {% if recipe.under_30 == 1 %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </p>
+            </div>
+            <div class="row mb-3">
+                <p class="col-4">Instructions:</p>
+                <p class="col-8">{{recipe.instructions}}</p>
+            </div>
+            <div class="row mb-3">
+                <p class="col-4">Date Made:</p>
+                <p class="col-8">{{recipe.made_on.strftime('%B %eth, %Y')}}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
